@@ -4,7 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>MUDAIN Project</title>
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Mudain">
+<title>Mudain Project — Platform Manajemen Bisnis Terintegrasi</title>
+<meta name="description" content="Platform digital untuk mengelola bisnis, produksi, operasional, dan keuangan secara terstruktur.">
+<meta name="theme-color" content="#09090b">
+<link rel="canonical" href="https://mudain-project.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mudain Project">
+<meta property="og:locale" content="id_ID">
+<meta property="og:url" content="https://mudain-project.vercel.app/">
+<meta property="og:title" content="Mudain Project — Platform Manajemen Bisnis Terintegrasi">
+<meta property="og:description" content="Platform digital untuk mengelola bisnis, produksi, operasional, dan keuangan secara terstruktur.">
+<meta property="og:image" content="https://mudain-project.vercel.app/og-image.png">
+<meta property="og:image:secure_url" content="https://mudain-project.vercel.app/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo Mudain Project dan judul Platform Manajemen Bisnis Terintegrasi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mudain Project — Platform Manajemen Bisnis Terintegrasi">
+<meta name="twitter:description" content="Platform digital untuk mengelola bisnis, produksi, operasional, dan keuangan secara terstruktur.">
+<meta name="twitter:image" content="https://mudain-project.vercel.app/og-image.png">
+<meta name="twitter:image:alt" content="Logo Mudain Project dan judul Platform Manajemen Bisnis Terintegrasi">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap">
@@ -49,7 +73,7 @@ button { cursor: pointer; }
 .brand b { font: 600 14px/1 var(--f-sans); letter-spacing: .04em; }
 .brand span { font: 500 11px/1 var(--f-sans); letter-spacing: .14em; color: var(--dim); }
 .brand small { display: none; }
-.brand .brand-logo { height: 24px; max-width: 48px; object-fit: contain; }
+.brand .brand-logo { height: 24px; max-width: 48px; object-fit: contain; border-radius: 4px; }
 .demo { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .demo-label { font: 500 10px/1 var(--f-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); border: 1px solid var(--line2); border-radius: 5px; padding: 3px 6px; white-space: nowrap; }
 .roleswitch { height: 30px; background: var(--surface2); border: 1px solid var(--line); border-radius: 7px; padding: 0 28px 0 10px; font-weight: 500; font-size: 12.5px; min-width: 150px; }
@@ -361,7 +385,7 @@ input[type="file"] { height: auto; padding: 6px 8px; }
 .paperwrap { overflow-x: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
 .paper { background: var(--paper); color: var(--paper-ink); min-width: 560px; max-width: 794px; margin: 0 auto; padding: 32px 36px 36px; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); font-size: 11.5px; line-height: 1.5; font-family: var(--f-sans); }
 .pp-id { display: flex; align-items: flex-start; gap: 12px; min-width: 0; }
-.pp-logo { max-height: 52px; max-width: 110px; object-fit: contain; flex: none; }
+.pp-logo { max-height: 52px; max-width: 110px; object-fit: contain; flex: none; border-radius: 3px; }
 .pp-head { display: flex; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--paper-line); padding-bottom: 14px; margin-bottom: 16px; }
 .pp-brand { font: 600 17px/1.2 var(--f-sans); letter-spacing: .02em; }
 .pp-sub { color: var(--paper-mute); font-size: 10.5px; }
@@ -658,12 +682,14 @@ input[type="file"] { height: auto; padding: 6px 8px; }
 (function(){
 const { useState, useMemo, useEffect, useRef, Fragment } = React;
 const h = htm.bind(React.createElement);
+/* Logo bawaan MUDAIN (PNG kecil). Dipakai bila profil brand belum diubah; bisa diganti lewat Profil Brand. */
+const DEFAULT_LOGO = { src: '', w: 0, h: 0 };
 /* ---------- Data, helpers, mock state ---------- */
 const COMPANY = {
   name: 'MUDAIN Project',
   tagline: 'Apparel & Printing Production',
   address: '',
-  logo: '', logoW: 0, logoH: 0,
+  logo: DEFAULT_LOGO.src, logoW: DEFAULT_LOGO.w, logoH: DEFAULT_LOGO.h,
   wa: '0823-2078-1420',
   accounts: [
     { bank: 'Bank BCA', no: '8105913318', holder: 'Rizal Nurdian', src: 'BCA' },
@@ -683,7 +709,8 @@ function applyBrand(b) {
   COMPANY.address = b && typeof b.address === 'string' ? b.address.trim() : d.address;
   COMPANY.wa = b && typeof b.wa === 'string' ? b.wa.trim() : d.wa;
   const okLogo = b && typeof b.logo === 'string' && /^data:image\//.test(b.logo) && b.logoW > 0 && b.logoH > 0;
-  COMPANY.logo = okLogo ? b.logo : ''; COMPANY.logoW = okLogo ? b.logoW : 0; COMPANY.logoH = okLogo ? b.logoH : 0;
+  /* tanpa profil tersimpan (atau setelah Reset): logo bawaan MUDAIN. Profil yang sudah disimpan memakai logonya sendiri, atau tanpa logo bila dihapus. */
+  COMPANY.logo = okLogo ? b.logo : (b ? '' : d.logo); COMPANY.logoW = okLogo ? b.logoW : (b ? 0 : d.logoW); COMPANY.logoH = okLogo ? b.logoH : (b ? 0 : d.logoH);
   COMPANY.accounts = b && Array.isArray(b.accounts)
     ? b.accounts.map(a => ({ bank: String((a && a.bank) || '').trim(), no: String((a && a.no) || '').trim(), holder: String((a && a.holder) || '').trim(), src: String((a && a.src) || '').trim() })).filter(a => a.bank || a.no)
     : d.accounts.map(a => Object.assign({}, a));
