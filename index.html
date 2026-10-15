@@ -692,8 +692,7 @@ const COMPANY = {
   logo: DEFAULT_LOGO.src, logoW: DEFAULT_LOGO.w, logoH: DEFAULT_LOGO.h,
   wa: '0823-2078-1420',
   accounts: [
-    { bank: 'Bank BCA', no: '8105913318', holder: 'Rizal Nurdian', src: 'BCA' },
-    { bank: 'DANA / GoPay', no: '082320781420', holder: 'Rizal Nurdian', src: 'DANA' }
+    { bank: 'Bank Mandiri', no: '1320027279794', holder: 'Muda Kita Indonesia', src: 'Mandiri' }
   ]
 };
 
@@ -1001,7 +1000,7 @@ function makeInvoice(no, daysBack, category, items, dpNominal, dpVerified, settl
     no, date: daysAgo(daysBack), category, items, total, dpNominal, remaining,
     dpStatus: dpVerified ? 'verified' : 'unverified',
     dpVerifiedAt: dpVerified ? daysAgo(Math.max(0, daysBack - 1)) : null,
-    dpAccount: dpVerified ? 'BCA' : '', dpRef: dpVerified ? 'Transfer BCA' : '',
+    dpAccount: dpVerified ? 'Mandiri' : '', dpRef: dpVerified ? 'Transfer Mandiri' : '',
     settleStatus: remaining === 0 ? 'na' : (settleVerified ? 'verified' : 'none'),
     settleVerifiedAt: null, settleAccount: '', settleRef: '', settleRequest: null, settleReject: ''
   };
@@ -1100,12 +1099,12 @@ function seed() {
   const tx = (id, type, category, amount, client, note, d, account) => ({ id, type, category, amount, client, note, date: daysAgo(d), account });
   const cash = [
     tx('trx_open', 'in', 'opening', 5000000, '-', 'Saldo awal kas workshop', 40, 'Kas Tunai Workshop'),
-    tx('trx_dp_p6', 'in', 'income_dp', 6000000, p6.client.name, 'Pembayaran DP Invoice ' + p6.invoice.no, 23, 'BCA'),
-    tx('trx_out_1', 'out', 'expense_bahan', 4200000, '-', 'Belanja kain Combed & Drill', 18, 'BCA'),
-    tx('trx_dp_p5', 'in', 'income_dp', 1800000, p5.client.name, 'Pembayaran DP Invoice ' + p5.invoice.no, 14, 'DANA'),
-    tx('trx_dp_p4', 'in', 'income_dp', 4000000, p4.client.name, 'Pembayaran DP Invoice ' + p4.invoice.no, 11, 'BCA'),
+    tx('trx_dp_p6', 'in', 'income_dp', 6000000, p6.client.name, 'Pembayaran DP Invoice ' + p6.invoice.no, 23, 'Mandiri'),
+    tx('trx_out_1', 'out', 'expense_bahan', 4200000, '-', 'Belanja kain Combed & Drill', 18, 'Mandiri'),
+    tx('trx_dp_p5', 'in', 'income_dp', 1800000, p5.client.name, 'Pembayaran DP Invoice ' + p5.invoice.no, 14, 'Mandiri'),
+    tx('trx_dp_p4', 'in', 'income_dp', 4000000, p4.client.name, 'Pembayaran DP Invoice ' + p4.invoice.no, 11, 'Mandiri'),
     tx('trx_out_2', 'out', 'expense_bahan', 650000, '-', 'Pembelian benang & resleting', 9, 'Kas Tunai Workshop'),
-    tx('trx_dp_p3', 'in', 'income_dp', 5000000, p3.client.name, 'Pembayaran DP Invoice ' + p3.invoice.no, 3, 'BCA'),
+    tx('trx_dp_p3', 'in', 'income_dp', 5000000, p3.client.name, 'Pembayaran DP Invoice ' + p3.invoice.no, 3, 'Mandiri'),
     tx('trx_out_3', 'out', 'expense_upah', 1500000, '-', 'Upah jahit minggu ini', 2, 'Kas Tunai Workshop')
   ];
   return { projects, cash };
@@ -2668,7 +2667,7 @@ function ProfilView({ c }) {
     <section className="card"><div className="card-head"><h3>Rekening Pembayaran</h3><button className="btn sm" id="br-acc-add" onClick=${addAcc}>Tambah rekening</button></div>
       <p className="muted">Tampil di Invoice dan pesan WhatsApp penagihan. Atas nama rekening pertama dicetak di Invoice. Nama bank juga menjadi pilihan sumber dana di Buku Kas dan verifikasi pembayaran.</p>
       ${d.accounts.length ? d.accounts.map((a, i) => h`<div className="acctrow" key=${i}>
-        <${Field} label="Bank / e-wallet"><input id=${'br-bank-' + i} value=${a.bank} onChange=${e => setAcc(i, 'bank', e.target.value)} placeholder="Bank BCA" /><//>
+        <${Field} label="Bank / e-wallet"><input id=${'br-bank-' + i} value=${a.bank} onChange=${e => setAcc(i, 'bank', e.target.value)} placeholder="Bank Mandiri" /><//>
         <${Field} label="Nomor rekening"><input id=${'br-no-' + i} value=${a.no} onChange=${e => setAcc(i, 'no', e.target.value)} placeholder="1234567890" /><//>
         <${Field} label="Atas nama"><input id=${'br-holder-' + i} value=${a.holder} onChange=${e => setAcc(i, 'holder', e.target.value)} placeholder="Nama pemilik" /><//>
         <button className="btn sm" aria-label=${'Hapus rekening ' + (i + 1)} id=${'br-acc-del-' + i} onClick=${() => delAcc(i)}>Hapus</button></div>`)
