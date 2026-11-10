@@ -688,6 +688,137 @@ input[type="file"] { height: auto; padding: 6px 8px; }
 }
 @media (max-width: 639px) and (prefers-reduced-motion: reduce) { .modal, .modal.wide { animation: none; } }
 @media (min-width: 640px) and (max-width: 767px) { .modal-head .icon-btn { min-height: 44px; } }
+
+.kas-acts { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; }
+.kas-acts .btn { min-height: 44px; justify-content: center; }
+.fold { padding: 0; overflow: hidden; }
+.fold-head { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: transparent; border: 0; padding: 14px 16px; min-height: 56px; text-align: left; color: var(--ink); }
+.fold-t { display: grid; gap: 2px; min-width: 0; }
+.fold-t b { font: 600 15px/1.3 var(--f-sans); }
+.fold-t small { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.fold-chev { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-text); transition: transform .22s ease; }
+.fold.open .fold-chev { transform: rotate(180deg); }
+.fold-body { border-top: 1px solid var(--line); padding: 14px 16px 16px; }
+@media (prefers-reduced-motion: no-preference) { .fold-body { animation: viewin .2s ease-out; } }
+@media (prefers-reduced-motion: reduce) { .fold-chev { transition: none; } }
+
+/* ========== Gaya super app (Beranda, grid layanan, animasi ringan) ========== */
+:root {
+  --hero-top: #f7a53b; --hero-grad: linear-gradient(135deg, #f7a53b 0%, #ee7d1b 55%, #e0621a 100%); --hero-grad-v: linear-gradient(180deg, #f7a53b 0%, #ee7d1b 100%);
+  --shadow-card: 0 6px 20px rgba(120, 60, 10, .10);
+}
+:root[data-theme="dark"] {
+  --hero-top: #7b3d0a; --hero-grad: linear-gradient(135deg, #8a4309 0%, #6f3208 55%, #5a2807 100%); --hero-grad-v: linear-gradient(180deg, #7b3d0a 0%, #5e2a07 100%);
+  --shadow-card: 0 6px 20px rgba(0, 0, 0, .35);
+}
+.hue-blue { --hb: #e6efff; --hf: #2f5fd0; } .hue-amber { --hb: #fff2d2; --hf: #b45f06; } .hue-violet { --hb: #f0e8ff; --hf: #7c3aed; }
+.hue-orange { --hb: #ffe8d4; --hf: #d9560f; } .hue-green { --hb: #def5e6; --hf: #15803d; } .hue-teal { --hb: #d8f4ef; --hf: #0f766e; }
+.hue-rose { --hb: #ffe3e8; --hf: #be123c; } .hue-sky { --hb: #dff1fd; --hf: #0369a1; } .hue-pink { --hb: #fde6f2; --hf: #be185d; }
+.hue-slate { --hb: #eaedf1; --hf: #475569; } .hue-gold { --hb: #fcefc8; --hf: #a16207; }
+:root[data-theme="dark"] .hue-blue { --hb: rgba(59, 110, 230, .18); --hf: #8fb0ff; } :root[data-theme="dark"] .hue-amber { --hb: rgba(245, 158, 11, .16); --hf: #fbbf4a; }
+:root[data-theme="dark"] .hue-violet { --hb: rgba(139, 92, 246, .18); --hf: #c4a6ff; } :root[data-theme="dark"] .hue-orange { --hb: rgba(240, 138, 32, .18); --hf: #f7a94a; }
+:root[data-theme="dark"] .hue-green { --hb: rgba(34, 197, 94, .15); --hf: #6ee79a; } :root[data-theme="dark"] .hue-teal { --hb: rgba(20, 184, 166, .16); --hf: #5eead4; }
+:root[data-theme="dark"] .hue-rose { --hb: rgba(244, 63, 94, .16); --hf: #fda4b4; } :root[data-theme="dark"] .hue-sky { --hb: rgba(14, 165, 233, .16); --hf: #7dd3fc; }
+:root[data-theme="dark"] .hue-pink { --hb: rgba(236, 72, 153, .16); --hf: #f9a8d4; } :root[data-theme="dark"] .hue-slate { --hb: rgba(148, 163, 184, .16); --hf: #cbd5e1; }
+:root[data-theme="dark"] .hue-gold { --hb: rgba(234, 179, 8, .16); --hf: #fde047; }
+
+.card, .stat { border-radius: 14px; }
+.btn { border-radius: 10px; }
+.modal { border-radius: 16px; }
+.side li button { border-radius: 10px; }
+.card-acts { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.home { display: grid; gap: 16px; max-width: 960px; min-width: 0; }
+.hero { background: var(--hero-grad); color: #fff; border-radius: 20px; padding: 16px 16px 60px; }
+.hero-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.hello small { display: block; font-size: 12px; opacity: .88; }
+.hello b { font: 600 20px/1.25 var(--f-sans); letter-spacing: -.01em; }
+.rolepill { font: 600 11px/1 var(--f-sans); letter-spacing: .04em; background: rgba(255, 255, 255, .22); border: 1px solid rgba(255, 255, 255, .38); padding: 7px 11px; border-radius: 99px; white-space: nowrap; }
+.hsearch { display: flex; align-items: center; gap: 8px; background: #fff; color: #6b5d4f; border-radius: 14px; padding: 0 12px; margin-top: 12px; height: 44px; box-shadow: 0 2px 8px rgba(0, 0, 0, .10); }
+.hsearch input { flex: 1; min-width: 0; border: 0; background: transparent; height: 42px; padding: 0; border-radius: 0; color: #2a1d12; outline: 0; font-size: 14px; }
+.hsearch input::placeholder { color: #8c7f70; }
+.hs-results { list-style: none; margin: 8px 0 0; padding: 6px; background: #fff; border-radius: 14px; display: grid; gap: 2px; box-shadow: 0 8px 24px rgba(0, 0, 0, .15); }
+.hs-results button { width: 100%; display: flex; align-items: center; gap: 10px; background: transparent; border: 0; border-radius: 10px; padding: 6px 8px; color: #2a1d12; font-weight: 500; min-height: 44px; text-align: left; }
+.hs-results button:hover { background: #fbf4e9; }
+.hs-results .none { padding: 10px; color: #6b5d4f; }
+.wallet { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px; box-shadow: var(--shadow-card); margin: -76px 14px 0; position: relative; z-index: 1; }
+.wstats { display: flex; gap: 16px; justify-content: space-between; }
+.wstats > div { min-width: 0; }
+.wstats span { display: block; font: 500 11px/1.3 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+.wstats b { display: block; font: 600 20px/1.35 var(--f-mono); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.wactions { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.wact { background: transparent; border: 0; display: grid; justify-items: center; align-content: start; gap: 6px; font: 500 11.5px/1.2 var(--f-sans); color: var(--ink); padding: 2px; min-height: 44px; text-align: center; }
+.wact-ico { position: relative; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-text); }
+.wact-ico .nav-badge, .svc-ico .nav-badge { position: absolute; top: -5px; right: -6px; }
+.sec-h { font: 600 15px/1.3 var(--f-sans); margin: 6px 2px -4px; }
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 16px 8px; }
+.svc { background: transparent; border: 0; display: grid; justify-items: center; align-content: start; gap: 7px; padding: 2px; color: var(--ink); min-height: 44px; text-align: center; }
+.svc-ico { position: relative; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 17px; background: var(--hb); color: var(--hf); }
+.svc-ico.sm { width: 36px; height: 36px; border-radius: 11px; flex: none; }
+.svc-l { font: 500 11.5px/1.25 var(--f-sans); overflow-wrap: anywhere; }
+.todo { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.todo button { width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; min-height: 56px; color: var(--ink); }
+.todo-t { flex: 1; display: grid; min-width: 0; }
+.todo-t small { color: var(--muted); font-size: 12px; }
+.hscroll { display: flex; gap: 10px; overflow-x: auto; padding: 2px 2px 8px; scroll-snap-type: x proximity; scrollbar-width: none; }
+.hscroll::-webkit-scrollbar { display: none; }
+.pcard { flex: 0 0 224px; scroll-snap-align: start; text-align: left; display: grid; gap: 4px; align-content: start; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 12px; color: var(--ink); }
+.pcard span, .pcard small { color: var(--muted); font-size: 12px; }
+.pbar { height: 6px; background: var(--surface3); border-radius: 9px; overflow: hidden; margin: 4px 0; }
+.pbar i { display: block; height: 100%; background: var(--hero-grad); border-radius: 9px; }
+
+.catlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.catlist li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto auto; gap: 6px; align-items: center; }
+.catlist li.off input { opacity: .55; text-decoration: line-through; }
+.cat-use { font-size: 11px; color: var(--dim); white-space: nowrap; padding: 0 4px; }
+.catadd { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+
+@media (min-width: 768px) {
+  .wallet { margin: -76px 20px 0; }
+  .hero { padding: 20px 20px 64px; }
+}
+@media (max-width: 767px) {
+  .topbar { background: var(--hero-top); border-bottom: 0; color: #fff; }
+  .topbar .brand b, .topbar .brand span { color: #fff; }
+  .topbar .roleswitch { background-color: rgba(255, 255, 255, .22); border-color: rgba(255, 255, 255, .4); color: #fff; }
+  .roleswitch option { color: #2a1d12; background: #fff; }
+  .topbar .icon-btn, .topbar .whoami b, .topbar .whoami span { color: #fff; }
+  .topbar .syncbadge { color: #fff; border-color: rgba(255, 255, 255, .4); }
+  .hero { background: var(--hero-grad-v); margin: -16px -14px 0; border-radius: 0 0 26px 26px; padding: 6px 16px 62px; }
+  .wallet { margin: -76px 0 0; }
+  .svc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 6px; }
+  .hscroll { margin: 0 -14px; padding-left: 14px; padding-right: 14px; }
+  .bnav { border-radius: 18px 18px 0 0; box-shadow: 0 -8px 24px rgba(60, 35, 10, .10); }
+  .bnav button.on::before { display: none; }
+  .bnav::after { content: ''; position: absolute; top: 0; left: 0; height: 3px; width: calc(100% / var(--n, 5)); transform: translateX(calc(var(--i, 0) * 100%)); background: linear-gradient(90deg, transparent 28%, var(--accent) 28%, var(--accent) 72%, transparent 72%); border-radius: 0 0 3px 3px; pointer-events: none; }
+  .bnav button.on { font-weight: 600; }
+  .catlist li { grid-template-columns: minmax(0, 1fr) auto auto auto; row-gap: 4px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .catlist li input { grid-column: 1 / -1; }
+}
+@media (max-width: 400px) { .wstats b { font-size: 17px; } .hello b { font-size: 18px; } }
+
+/* animasi ringan: hanya transform/opacity, nonaktif bila pengguna meminta gerak dikurangi */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes viewin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes popin { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+  @keyframes tilein { from { opacity: 0; transform: translateY(8px) scale(.94); } to { opacity: 1; transform: none; } }
+  @keyframes grow { from { transform: scaleY(.2); opacity: 0; } to { transform: none; opacity: 1; } }
+  .view { animation: viewin .22s ease-out; }
+  .overlay { animation: fadein .16s ease-out; }
+  .toast { animation: popin .2s ease-out; }
+  .svc { animation: tilein .3s ease-out both; animation-delay: var(--d, 0ms); }
+  .btn, .wact-ico, .svc-ico, .pcard, .todo button, .stat { transition: transform .12s ease, background-color .12s, border-color .12s, color .12s; }
+  .btn:active:not(:disabled), .svc:active .svc-ico, .wact:active .wact-ico, .pcard:active, .todo button:active { transform: scale(.96); }
+  @media (hover: hover) { .svc:hover .svc-ico { transform: translateY(-2px); } .todo button:hover, .pcard:hover { border-color: var(--line2); } }
+  .side li button.on::before { animation: grow .22s ease-out; }
+  .side li button { transition: background-color .15s, color .15s, transform .15s; }
+  .side li button:hover { transform: translateX(2px); }
+  .bnav::after { transition: transform .3s cubic-bezier(.3, .9, .3, 1); }
+  .bnav button svg { transition: transform .22s cubic-bezier(.3, 1.6, .5, 1); }
+  .bnav button.on svg { transform: translateY(-2px) scale(1.14); }
+  @media (min-width: 640px) { .modal { animation: popin .2s ease-out; } }
+}
 </style>
 </head>
 <body>
@@ -752,12 +883,12 @@ const brandSlug = () => (COMPANY.name === BRAND_DEFAULT.name ? 'MUDAIN' : (safeN
 const brandParts = () => { const w = COMPANY.name.trim().split(/\s+/); return { first: w[0].toUpperCase(), rest: w.slice(1).join(' ').toUpperCase() }; };
 
 const ROLES = {
-  owner: { label: 'Owner', menu: ['dashboard', 'prospek', 'jobs', 'produksi', 'verifikasi', 'kas', 'pengguna', 'profil'] },
-  admin_keuangan: { label: 'Admin Keuangan', menu: ['dashboard', 'verifikasi', 'kas'] },
-  spv_produksi: { label: 'SPV Produksi', menu: ['produksi'] },
-  sales: { label: 'Sales', menu: ['prospek', 'tagihan', 'cl'] },
-  kru_desain: { label: 'Kru Desain', menu: ['desain'] },
-  kru_lapangan: { label: 'Kru Lapangan', menu: ['produksi'] }
+  owner: { label: 'Owner', menu: ['home', 'dashboard', 'prospek', 'jobs', 'produksi', 'verifikasi', 'kas', 'pengguna', 'profil'] },
+  admin_keuangan: { label: 'Admin Keuangan', menu: ['home', 'dashboard', 'verifikasi', 'kas'] },
+  spv_produksi: { label: 'SPV Produksi', menu: ['home', 'produksi'] },
+  sales: { label: 'Sales', menu: ['home', 'prospek', 'tagihan', 'cl'] },
+  kru_desain: { label: 'Kru Desain', menu: ['home', 'desain'] },
+  kru_lapangan: { label: 'Kru Lapangan', menu: ['home', 'produksi'] }
 };
 
 /* Pengguna contoh untuk Mode Demo. Di Mode Supabase daftar ini diganti akun asli. */
@@ -777,6 +908,7 @@ const codeTag = c => String(c || '').replace('-', '');
 const salesText = p => (p && p.salesName ? p.salesName + (p.salesCode ? ' (' + p.salesCode + ')' : '') : '-');
 
 const MENU_LABEL = {
+  home: { owner: 'Beranda' },
   dashboard: { owner: 'Dashboard Eksekutif', admin_keuangan: 'Dashboard Keuangan' },
   prospek: { owner: 'Pipeline Prospek', sales: 'Pipeline Prospek (CRM)' },
   jobs: { owner: 'Job Orders (JO)' },
@@ -805,9 +937,45 @@ const normSize = v => {
 };
 const CASH_CATS = {
   opening: 'Saldo Awal', income_dp: 'DP Masuk', income_pelunasan: 'Pelunasan Masuk',
-  expense_bahan: 'Belanja Bahan Kain', expense_sablon: 'Sablon/Bordir', expense_upah: 'Upah', expense_ops: 'Operasional', expense_shopee: 'Pembayaran via Shopee', expense_maklon: 'Pembayaran Maklon', expense_percetakan: 'Pembayaran Percetakan' 
+  expense_bahan: 'Belanja Bahan Kain', expense_sablon: 'Sablon/Bordir', expense_upah: 'Upah', expense_ops: 'Operasional'
 };
-const EXPENSE_CATS = ['expense_bahan', 'expense_sablon', 'expense_upah', 'expense_ops', 'expense_shopee', 'expense_maklon', 'expense_percetakan'];
+/* Kategori kas keluar: bawaan + yang dikelola Owner. Disimpan sebagai teks id di kolom cash.category (tanpa perubahan skema tabel cash).
+   Daftar pilihannya: Mode Demo di browser; Mode Supabase di tabel app_settings (lihat file SQL pembaruan skema: schema-update-kategori-kas.sql), dengan salinan lokal sebagai cadangan. */
+const DEFAULT_EXPENSE_CATS = [
+  { id: 'expense_bahan', label: 'Belanja Bahan Kain' }, { id: 'expense_sablon', label: 'Sablon/Bordir' },
+  { id: 'expense_upah', label: 'Upah' }, { id: 'expense_ops', label: 'Operasional' },
+  { id: 'expense_va_shopee', label: 'Pembayaran VA Shopee' }, { id: 'expense_maklon', label: 'Pembayaran Maklon' },
+  { id: 'expense_percetakan', label: 'Pembayaran Percetakan' }
+];
+const CATS_KEY = 'mudain-cats-v1';
+let EXPENSE_LIST = DEFAULT_EXPENSE_CATS.map(x => ({ id: x.id, label: x.label, hidden: false }));
+const catSubs = new Set();
+function normCats(v) {
+  const out = [], seen = new Set();
+  (Array.isArray(v) ? v : []).forEach(x => {
+    const id = x && typeof x.id === 'string' ? x.id.trim() : '';
+    const label = x && typeof x.label === 'string' ? x.label.trim().slice(0, 60) : '';
+    if (!id || !label || seen.has(id) || /^(opening|income_)/.test(id)) return;
+    seen.add(id); out.push({ id, label, hidden: !!x.hidden });
+  });
+  DEFAULT_EXPENSE_CATS.forEach(d => { if (!seen.has(d.id)) out.push({ id: d.id, label: d.label, hidden: false }); });
+  return out;
+}
+function applyCats(v) {
+  EXPENSE_LIST = normCats(v);
+  try { window.localStorage.setItem(CATS_KEY, JSON.stringify(EXPENSE_LIST)); } catch (e) { /* abaikan */ }
+  catSubs.forEach(f => f());
+}
+function loadCatsLocal() { try { const r = window.localStorage.getItem(CATS_KEY); if (r) EXPENSE_LIST = normCats(JSON.parse(r)); } catch (e) { /* abaikan */ } }
+function useCats() {
+  const [, setT] = useState(0);
+  useEffect(() => { const f = () => setT(x => x + 1); catSubs.add(f); return () => { catSubs.delete(f); }; }, []);
+  return EXPENSE_LIST;
+}
+/* label kategori: daftar Owner, lalu nama bawaan lama, lalu teks aslinya (transaksi lama tidak pernah hilang labelnya) */
+const catLabel = id => { const f = EXPENSE_LIST.find(x => x.id === id); return f ? f.label : (CASH_CATS[id] || id); };
+const expenseOptions = current => EXPENSE_LIST.filter(x => !x.hidden || x.id === current);
+const newCatId = label => 'exp_' + (label.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 24) || 'lain') + '_' + Math.random().toString(36).slice(2, 6);
 /* Sumber kas di Buku Kas: diambil dari rekening di Profil Brand + kas tunai.
    Nilai yang tersimpan di data tetap teks biasa (tidak ada perubahan skema). Transaksi lama tidak ditulis ulang. */
 const CASH_ON_HAND = 'Kas Tunai Workshop';
@@ -1704,7 +1872,7 @@ function buildWorkbook(projects, cash, per) {
   if (per.year !== 'all') kas.push(['', '', B('Saldo awal periode'), '', '', '', '', '', N(f.opening)]);
   f.rows.slice().sort((a, b) => new Date(a.date) - new Date(b.date)).forEach(t => {
     bal += t.type === 'in' ? t.amount : -t.amount; n++;
-    kas.push([N(n), { d: t.date }, t.note, CASH_CATS[t.category] || t.category, t.client && t.client !== '-' ? t.client : '', t.account || '', t.type === 'in' ? N(t.amount) : '', t.type === 'out' ? N(t.amount) : '', N(bal)]);
+    kas.push([N(n), { d: t.date }, t.note, catLabel(t.category), t.client && t.client !== '-' ? t.client : '', t.account || '', t.type === 'in' ? N(t.amount) : '', t.type === 'out' ? N(t.amount) : '', N(bal)]);
   });
   const last = kas.length;
   kas.push(['', '', B('TOTAL'), '', '', '', { v: f.inn, s: 'boldnum' }, { v: f.out, s: 'boldnum' }, { v: bal, s: 'boldnum' }]);
@@ -1981,8 +2149,19 @@ async function saveUser(client, id, patch) {
   if (!r.data || !r.data.length) throw new Error('Perubahan ditolak. Hanya Owner yang boleh mengubah peran.');
   return rowToUser(r.data[0]);
 }
+async function fetchCats(client) {
+  const r = await client.from('app_settings').select('value').eq('key', 'expense_cats').maybeSingle();
+  if (r.error) throw r.error;
+  return r.data && r.data.value && Array.isArray(r.data.value.list) ? r.data.value.list : null;
+}
+async function saveCatsCloud(client, list) {
+  const r = await client.from('app_settings').upsert({ key: 'expense_cats', value: { v: 1, list }, updated_at: new Date().toISOString() }).select('key');
+  if (r.error) throw r.error;
+  if (!r.data || !r.data.length) throw new Error('Ditolak. Hanya Owner yang boleh mengubah kategori.');
+}
 /* ---------- UI primitives ---------- */
 const ICONS = {
+  chev: 'M6 9l6 6 6-6', home: 'M4 11l8-7 8 7M6 10v10h12V10M10 20v-5h4v5', search: 'M11 19a8 8 0 100-16 8 8 0 000 16zM21 21l-4.300-4.300',
   sun: 'M12 16a4 4 0 100-8 4 4 0 000 8zM12 2v2M12 20v2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M2 12h2M20 12h2M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400', moon: 'M20 14.500A8 8 0 019.500 4 8 8 0 1020 14.500z',
   plus: 'M12 5v14M5 12h14', check: 'M5 13l4 4L19 7', lock: 'M7 11V8a5 5 0 0110 0v3M6 11h12v9H6z', x: 'M6 6l12 12M18 6L6 18',
   doc: 'M7 3h7l4 4v14H7zM14 3v5h4M10 13h5M10 17h5', down: 'M12 4v11M7 11l5 5 5-5M5 20h14', wa: 'M4 20l1.4-4.2A8 8 0 1112 20a8 8 0 01-3.6-.9zM9 9c0 3 3 6 6 6l1-1.6-2-1-1 .8c-.8-.4-1.600-1.200-2-2l.8-1-1-2z',
@@ -1995,8 +2174,8 @@ const ICONS = {
   profil: 'M4 9l1-5h14l1 5M4 9v11h16V9M4 9c0 2 3 2 4 0 1 2 3 2 4 0 1 2 3 2 4 0 1 2 4 2 4 0M10 20v-5h4v5', more: 'M5 12h.01M12 12h.01M19 12h.01',
   gear: 'M12 15a3 3 0 100-6 3 3 0 000 6zM19 12a7 7 0 00-.1-1.200l2-1.500-2-3.400-2.300.9a7 7 0 00-2-1.200L14.300 3h-4.600l-.4 2.600a7 7 0 00-2 1.200l-2.300-.9-2 3.400 2 1.500A7 7 0 005 12c0 .4 0 .8.100 1.200l-2 1.500 2 3.400 2.300-.9a7 7 0 002 1.200l.4 2.600h4.600l.4-2.600a7 7 0 002-1.200l2.300.9 2-3.400-2-1.500c.1-.4.100-.8.100-1.200z'
 };
-const MENU_ICON = { dashboard: 'dashboard', prospek: 'prospek', jobs: 'jobs', produksi: 'produksi', verifikasi: 'verifikasi', kas: 'kas', tagihan: 'tagihan', cl: 'cl', desain: 'desain', pengguna: 'pengguna', profil: 'profil' };
-const MENU_SHORT = { dashboard: 'Dashboard', prospek: 'Prospek', jobs: 'JO', produksi: 'Produksi', verifikasi: 'Verifikasi', kas: 'Kas', tagihan: 'Tagihan', cl: 'CL', desain: 'Desain', pengguna: 'Pengguna', profil: 'Profil' };
+const MENU_ICON = { home: 'home', dashboard: 'dashboard', prospek: 'prospek', jobs: 'jobs', produksi: 'produksi', verifikasi: 'verifikasi', kas: 'kas', tagihan: 'tagihan', cl: 'cl', desain: 'desain', pengguna: 'pengguna', profil: 'profil' };
+const MENU_SHORT = { home: 'Beranda', dashboard: 'Dashboard', prospek: 'Prospek', jobs: 'JO', produksi: 'Produksi', verifikasi: 'Verifikasi', kas: 'Kas', tagihan: 'Tagihan', cl: 'CL', desain: 'Desain', pengguna: 'Pengguna', profil: 'Profil' };
 function Ico({ n, s, w }) {
   return h`<svg className="ico" width=${s || 16} height=${s || 16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth=${w || 2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d=${ICONS[n] || ''} /></svg>`;
 }
@@ -2053,7 +2232,7 @@ function CashList({ cash, limit, filter }) {
   const rows = cash.filter(t => filter === 'all' || t.type === filter).slice().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, limit || 999);
   if (!rows.length) return h`<${Empty}>Belum ada mutasi pada filter ini.<//>`;
   return h`<ul className="cashlist">${rows.map(t => h`<li key=${t.id}>
-      <div className="cl-main"><div className="cl-top"><b>${t.note}</b><${Badge} tone=${t.type === 'in' ? 'ok' : 'neutral'}>${CASH_CATS[t.category] || t.category}<//></div>
+      <div className="cl-main"><div className="cl-top"><b>${t.note}</b><${Badge} tone=${t.type === 'in' ? 'ok' : 'neutral'}>${catLabel(t.category)}<//></div>
         <span>${fmtDT(t.date)}${t.client && t.client !== '-' ? ' · ' + t.client : ''}${t.account ? ' · ' + t.account : ''}</span></div>
       <div className=${'cl-amt ' + (t.type === 'in' ? 'in' : 'out')}>${t.type === 'in' ? '+' : '−'} ${rp(t.amount)}</div></li>`)}</ul>`;
 }
@@ -2117,7 +2296,8 @@ function Dashboard({ c }) {
             <div className="pipe-chips">${list.map(p => h`<em key=${p.id}>${p.name}</em>`)}</div></li>`;
         })}</ul></section>
       <section className="card"><div className="card-head"><h3>Mutasi Kas</h3>
-          ${c.canMoney ? h`<button className="btn sm" onClick=${() => c.open({ type: 'expense' })}><${Ico} n="plus" s=${14} /> Catat Kas Keluar</button>` : null}</div>
+          <div className="card-acts">${c.role === 'owner' ? h`<button className="btn sm" id="btn-cats" onClick=${() => c.open({ type: 'cats' })}><${Ico} n="pen" s=${14} /> Kategori</button>` : null}
+          ${c.canMoney ? h`<button className="btn sm" onClick=${() => c.open({ type: 'expense' })}><${Ico} n="plus" s=${14} /> Catat Kas Keluar</button>` : null}</div></div>
         <${FilterChips} value=${filter} onChange=${setFilter} />
         <${CashList} cash=${fp.rows} filter=${filter} limit=${8} />
         <button className="linkbtn" onClick=${() => c.go('kas')}>Lihat seluruh Buku Kas</button></section>
@@ -2156,10 +2336,18 @@ function PeriodBar({ c, extra }) {
     ${extra || null}</div>`;
 }
 
+/* Kartu lipat (dropdown): isi hanya dirender saat dibuka, jadi halaman tetap ringan. */
+function Fold({ id, title, meta, children }) {
+  const [open, setOpen] = useState(false);
+  return h`<section className=${'card fold' + (open ? ' open' : '')} id=${id}>
+    <button type="button" className="fold-head" id=${id + '-toggle'} aria-expanded=${open} aria-controls=${id + '-body'} onClick=${() => setOpen(o => !o)}>
+      <span className="fold-t"><b>${title}</b><small>${meta}</small></span><span className="fold-chev"><${Ico} n="chev" s=${20} /></span></button>
+    ${open ? h`<div className="fold-body" id=${id + '-body'}>${children}</div>` : null}</section>`;
+}
+
 function PiutangCard({ c, fp }) {
   const rows = fp.piu;
-  return h`<section className="card" id="piutang"><div className="card-head"><h3>Rincian Piutang Belum Lunas</h3>
-      <span className="muted">${rows.length} invoice · berdasarkan tanggal invoice terbit · ${periodLabel(c.period)}</span></div>
+  return h`<${Fold} id="piutang" title="Rincian Piutang Belum Lunas" meta=${rows.length + ' invoice · ' + rp(fp.piuTotal) + ' · ' + periodLabel(c.period)}>
     ${!rows.length ? h`<${Empty}>Tidak ada piutang pada periode ini. Semua invoice sudah lunas.<//>` : h`<div>
       <ul className="piu-groups" aria-label="Piutang menurut penyebab">${fp.groups.map(g => h`<li key=${g.key} className=${g.amount ? 'has' : ''}><span>${g.label}</span><b>${rp(g.amount)}</b></li>`)}</ul>
       <div className="tablewrap"><table className="ptable rt-piu" id="piutang-table"><thead><tr>
@@ -2174,7 +2362,7 @@ function PiutangCard({ c, fp }) {
             <td className="acts"><button className="btn sm" onClick=${() => c.open({ type: 'doc', doc: 'invoice', pid: r.p.id })}><${Ico} n="doc" s=${14} /> Invoice</button>
               ${wa ? h`<a className="btn wa sm" href=${waLink(r.p.client.wa, wa)} target="_blank" rel="noopener noreferrer"><${Ico} n="wa" s=${14} /> Tagih</a>` : null}</td></tr>`;
         })}</tbody>
-        <tfoot><tr><td colSpan="2">Total</td><td className="r" data-l="Total invoice">${rp(rows.reduce((s, r) => s + r.total, 0))}</td><td className="r" data-l="Dibayar">${rp(rows.reduce((s, r) => s + r.paid, 0))}</td><td className="r" data-l="Sisa piutang">${rp(fp.piuTotal)}</td><td colSpan="2"></td></tr></tfoot></table></div></div>`}</section>`;
+        <tfoot><tr><td colSpan="2">Total</td><td className="r" data-l="Total invoice">${rp(rows.reduce((s, r) => s + r.total, 0))}</td><td className="r" data-l="Dibayar">${rp(rows.reduce((s, r) => s + r.paid, 0))}</td><td className="r" data-l="Sisa piutang">${rp(fp.piuTotal)}</td><td colSpan="2"></td></tr></tfoot></table></div></div>`}<//>`;
 }
 
 function KasView({ c }) {
@@ -2195,12 +2383,14 @@ function KasView({ c }) {
     <div className=${'statgrid ' + (isAll ? 'three' : '')}>
       ${isAll ? null : h`<div className="stat"><span>Saldo Awal Periode</span><b>${rp(fp.opening)}</b><small>Saldo sebelum ${periodLabel(c.period)}</small></div>`}
       <div className="stat"><span>Kas Masuk</span><b>${rp(fp.inn)}</b><small>DP, pelunasan, saldo awal</small></div>
-      <div className="stat"><span>Kas Keluar</span><b>${rp(fp.out)}</b><small>Bahan, upah, operasional,</small></div>
+      <div className="stat"><span>Kas Keluar</span><b>${rp(fp.out)}</b><small>Bahan, upah, operasional</small></div>
       <div className="stat"><span>${isAll ? 'Saldo Kas Riil' : 'Saldo Akhir Periode'}</span><b>${rp(fp.closing)}</b><small>Sinkron dengan semua verifikasi</small></div></div>
+    ${c.canMoney || c.role === 'owner' ? h`<div className="kas-acts" id="kas-acts">
+      ${c.canMoney ? h`<button className="btn primary" id="btn-expense" onClick=${() => c.open({ type: 'expense' })}><${Ico} n="plus" s=${16} /> Catat Kas Keluar</button>` : null}
+      ${c.role === 'owner' ? h`<button className="btn" id="btn-cats-kas" onClick=${() => c.open({ type: 'cats' })}><${Ico} n="pen" s=${16} /> Kategori</button>` : null}</div>` : null}
     <${PiutangCard} c=${c} fp=${fp} />
-    <section className="card"><div className="card-head"><h3>Mutasi Kas</h3>
-        ${c.canMoney ? h`<button className="btn primary sm" onClick=${() => c.open({ type: 'expense' })}><${Ico} n="plus" s=${14} /> Catat Kas Keluar</button>` : null}</div>
-      <${FilterChips} value=${filter} onChange=${setFilter} /><${CashList} cash=${fp.rows} filter=${filter} /></section></div>`;
+    <${Fold} id="mutasi" title="Mutasi Kas" meta=${fp.rows.length + ' transaksi · ' + periodLabel(c.period)}>
+      <${FilterChips} value=${filter} onChange=${setFilter} /><${CashList} cash=${fp.rows} filter=${filter} /><//></div>`;
 }
 
 function ProspekView({ c }) {
@@ -2570,17 +2760,61 @@ function SettleModal({ c, pid, onClose }) {
 }
 
 function ExpenseModal({ c, onClose }) {
-  const [cat, setCat] = useState('expense_bahan');
+  useCats();
+  const [cat, setCat] = useState(() => (expenseOptions()[0] || { id: 'expense_bahan' }).id);
   const [amount, setAmount] = useState('');
   const [note, setNote] = useState('');
   const [acc, setAcc] = useState('Kas Tunai Workshop');
   const ok = Number(amount) > 0 && note.trim();
   return h`<${Modal} title="Catat Kas Keluar" sub="Langsung memotong saldo kas riil" onClose=${onClose}
     footer=${h`<button className="btn" onClick=${onClose}>Batal</button><button className="btn primary" disabled=${!ok} onClick=${() => { c.A.addExpense({ category: cat, amount: Number(amount), note, account: acc }); onClose(); }}>Simpan Pengeluaran</button>`}>
-    <${Field} label="Kategori"><select id="ex-cat" value=${cat} onChange=${e => setCat(e.target.value)}>${EXPENSE_CATS.map(k => h`<option key=${k} value=${k}>${CASH_CATS[k]}</option>`)}</select><//>
+    <${Field} label="Kategori"><select id="ex-cat" value=${cat} onChange=${e => setCat(e.target.value)}>${expenseOptions(cat).map(k => h`<option key=${k.id} value=${k.id}>${k.label}</option>`)}</select><//>
+    ${c.role === 'owner' ? h`<button className="linkbtn" id="ex-manage" type="button" onClick=${() => c.open({ type: 'cats' })}>Kelola kategori kas keluar</button>` : null}
     <${Field} label="Nominal (Rp)"><input id="ex-amt" inputMode="numeric" value=${amount} onChange=${e => setAmount(e.target.value.replace(/\D/g, ''))} /><//>
     <${Field} label="Keterangan"><input id="ex-note" value=${note} onChange=${e => setNote(e.target.value)} placeholder="mis. Beli kain drill 20 meter" /><//>
     <${Field} label="Sumber dana"><select id="ex-acc" value=${acc} onChange=${e => setAcc(e.target.value)}>${cashSources(acc).map(a => h`<option key=${a}>${a}</option>`)}</select><//><//>`;
+}
+
+function CatsModal({ c, onClose }) {
+  const [list, setList] = useState(() => EXPENSE_LIST.map(x => Object.assign({}, x)));
+  const [nw, setNw] = useState('');
+  const [err, setErr] = useState('');
+  const [busy, setBusy] = useState(false);
+  const usage = id => c.cash.filter(t => t.type === 'out' && t.category === id).length;
+  const setLabel = (id, label) => setList(l => l.map(x => (x.id === id ? Object.assign({}, x, { label }) : x)));
+  const toggle = id => setList(l => l.map(x => (x.id === id ? Object.assign({}, x, { hidden: !x.hidden }) : x)));
+  const move = (id, d) => setList(l => {
+    const i = l.findIndex(x => x.id === id), j = i + d;
+    if (i < 0 || j < 0 || j >= l.length) return l;
+    const n = l.slice(); const t = n[i]; n[i] = n[j]; n[j] = t; return n;
+  });
+  const dup = (label, exceptId) => list.some(x => x.id !== exceptId && x.label.trim().toLowerCase() === label.trim().toLowerCase());
+  const add = () => {
+    const label = nw.trim();
+    if (!label) return;
+    if (dup(label, '')) { setErr('Kategori "' + label + '" sudah ada.'); return; }
+    setList(l => l.concat([{ id: newCatId(label), label: label.slice(0, 60), hidden: false }])); setNw(''); setErr('');
+  };
+  const save = async () => {
+    const bad = list.find(x => !x.label.trim());
+    if (bad) { setErr('Nama kategori tidak boleh kosong.'); return; }
+    const d = list.find(x => dup(x.label, x.id));
+    if (d) { setErr('Ada nama kategori yang kembar: "' + d.label.trim() + '".'); return; }
+    if (!list.some(x => !x.hidden)) { setErr('Sisakan minimal satu kategori yang tampil.'); return; }
+    setBusy(true); await c.A.saveCats(list.map(x => ({ id: x.id, label: x.label.trim(), hidden: x.hidden }))); setBusy(false); onClose();
+  };
+  return h`<${Modal} title="Kelola Kategori Kas Keluar" sub="Hanya Owner. Tampil di formulir Catat Kas Keluar." onClose=${onClose}
+    footer=${h`<button className="btn" onClick=${onClose}>Batal</button><button className="btn primary" id="cats-save" disabled=${busy} onClick=${save}>${busy ? 'Menyimpan...' : 'Simpan Kategori'}</button>`}>
+    <ul className="catlist" id="cats-list">${list.map((x, i) => h`<li key=${x.id} className=${x.hidden ? 'off' : ''}>
+      <input aria-label="Nama kategori" value=${x.label} maxLength="60" onChange=${e => setLabel(x.id, e.target.value)} />
+      <span className="cat-use">${usage(x.id)} transaksi</span>
+      <button className="icon-btn" type="button" aria-label=${'Naikkan ' + x.label} disabled=${i === 0} onClick=${() => move(x.id, -1)}>↑</button>
+      <button className="icon-btn" type="button" aria-label=${'Turunkan ' + x.label} disabled=${i === list.length - 1} onClick=${() => move(x.id, 1)}>↓</button>
+      <button className="btn sm" type="button" aria-label=${(x.hidden ? 'Tampilkan ' : 'Sembunyikan ') + x.label} onClick=${() => toggle(x.id)}>${x.hidden ? 'Tampilkan' : 'Sembunyikan'}</button></li>`)}</ul>
+    <div className="catadd"><input id="cat-new" placeholder="Nama kategori baru, mis. Pembayaran Ekspedisi" value=${nw} maxLength="60" onChange=${e => setNw(e.target.value)} onKeyDown=${e => { if (e.key === 'Enter') { e.preventDefault(); add(); } }} />
+      <button className="btn" id="cat-add" type="button" disabled=${!nw.trim()} onClick=${add}><${Ico} n="plus" s=${14} /> Tambah</button></div>
+    ${err ? h`<p className="errline" id="cats-err">${err}</p>` : null}
+    <p className="muted">Kategori yang disembunyikan tidak muncul di formulir, tetapi transaksi lama tetap memakai namanya. Mengubah nama ikut mengubah tampilan transaksi lama di kategori itu.</p><//>`;
 }
 
 function DocModal({ c, pid, type, onClose }) {
@@ -2711,7 +2945,7 @@ loadBrand();
 /* ---------- Layar masuk, pendaftaran, gerbang akun, dan kerangka aplikasi ---------- */
 
 /* Menu utama di bottom navigation (mobile). Sisanya masuk ke drawer "Lainnya". */
-const MOBILE_PRIMARY = { owner: ['dashboard', 'verifikasi', 'produksi', 'kas'] };
+const MOBILE_PRIMARY = { owner: ['home', 'verifikasi', 'produksi', 'kas'] };
 
 const THEME_KEY = 'mudain-theme';
 function getTheme() { return lsGet(THEME_KEY) === 'dark' ? 'dark' : 'light'; }
@@ -2944,16 +3178,68 @@ function UsersView({ c }) {
         <tbody>${pend.concat(rest).map(row)}</tbody></table></div></section></div>`;
 }
 
+
+/* ---------- Beranda ala super app: sapaan, ringkasan, aksi cepat, grid layanan ---------- */
+const HUE = { dashboard: 'blue', prospek: 'amber', jobs: 'violet', produksi: 'orange', verifikasi: 'green', kas: 'teal', tagihan: 'rose', cl: 'sky', desain: 'pink', pengguna: 'slate', profil: 'gold' };
+function HomeView({ c }) {
+  const [q, setQ] = useState('');
+  const fin = finance(c.projects, c.cash);
+  const first = (c.user.name || '').trim().split(/\s+/)[0] || 'Pengguna';
+  const items = c.menu.filter(v => v !== 'home');
+  const active = c.projects.filter(p => p.status === 'in_production' || p.status === 'in_rework');
+  const rework = c.projects.filter(p => p.status === 'in_rework').length;
+  const stats = c.canMoney ? [['Saldo kas', rp(fin.kas)], ['Piutang', rp(fin.piutang)]]
+    : c.role === 'sales' ? [['Piutang saya', rp(fin.piutang)], ['Proyek saya', String(c.projects.length)]]
+    : c.role === 'kru_desain' ? [['Antrean desain', String(c.projects.filter(p => p.status === 'cl_design_draft').length)], ['Proyek berjalan', String(active.length)]]
+    : [['Proyek berjalan', String(active.length)], ['Perlu perbaikan', String(rework)]];
+  const act = [];
+  if (c.canMoney) act.push({ k: 'out', ico: 'plus', label: 'Kas Keluar', on: () => c.open({ type: 'expense' }) });
+  if (c.role === 'owner') act.push({ k: 'cats', ico: 'pen', label: 'Kategori', on: () => c.open({ type: 'cats' }) });
+  ['verifikasi', 'kas', 'prospek', 'tagihan', 'cl', 'produksi', 'desain', 'dashboard'].forEach(v => {
+    if (act.length < 4 && items.includes(v)) act.push({ k: v, ico: MENU_ICON[v], label: MENU_SHORT[v], on: () => c.go(v), badge: c.badgeOf(v) });
+  });
+  const ql = q.trim().toLowerCase();
+  const hits = ql ? items.filter(v => (c.labelOf(v) + ' ' + MENU_SHORT[v]).toLowerCase().includes(ql)) : [];
+  const todo = items.map(v => [v, c.badgeOf(v)]).filter(x => x[1] > 0);
+  const canProd = items.includes('produksi');
+  return h`<div className="home">
+    <section className="hero">
+      <div className="hero-top"><div className="hello"><small>Halo,</small><b id="home-name">${first}</b></div><span className="rolepill">${ROLES[c.role].label}</span></div>
+      <label className="hsearch"><${Ico} n="search" s=${16} /><input id="home-search" type="search" autoComplete="off" placeholder="Cari layanan, mis. kas atau produksi" value=${q} onChange=${e => setQ(e.target.value)}
+        onKeyDown=${e => { if (e.key === 'Enter' && hits[0]) { c.go(hits[0]); } }} /></label>
+      ${ql ? h`<ul className="hs-results" id="home-hits">${hits.length ? hits.map(v => h`<li key=${v}><button onClick=${() => c.go(v)}><span className=${'svc-ico hue-' + HUE[v]}><${Ico} n=${MENU_ICON[v]} s=${16} /></span><span>${c.labelOf(v)}</span></button></li>`) : h`<li className="none">Layanan tidak ditemukan.</li>`}</ul>` : null}
+    </section>
+    <section className="wallet" id="home-wallet">
+      <div className="wstats">${stats.map(x => h`<div key=${x[0]}><span>${x[0]}</span><b>${x[1]}</b></div>`)}</div>
+      <div className="wactions">${act.map(a => h`<button key=${a.k} className="wact" id=${'qa-' + a.k} onClick=${a.on}><span className="wact-ico"><${Ico} n=${a.ico} s=${20} />${a.badge ? h`<em className="nav-badge">${a.badge}</em>` : null}</span><span>${a.label}</span></button>`)}</div>
+    </section>
+    <h2 className="sec-h">Layanan</h2>
+    <div className="svc-grid" id="svc-grid">${items.map((v, i) => h`<button key=${v} className="svc" id=${'svc-' + v} style=${{ '--d': (i * 28) + 'ms' }} onClick=${() => c.go(v)}>
+      <span className=${'svc-ico hue-' + HUE[v]}><${Ico} n=${MENU_ICON[v]} s=${24} w=${1.8} />${c.badgeOf(v) ? h`<em className="nav-badge">${c.badgeOf(v)}</em>` : null}</span>
+      <span className="svc-l">${MENU_SHORT[v]}</span></button>`)}</div>
+    ${todo.length ? h`<h2 className="sec-h">Perlu tindakan</h2>
+    <ul className="todo" id="home-todo">${todo.map(x => h`<li key=${x[0]}><button onClick=${() => c.go(x[0])}><span className=${'svc-ico sm hue-' + HUE[x[0]]}><${Ico} n=${MENU_ICON[x[0]]} s=${16} /></span>
+      <span className="todo-t"><b>${c.labelOf(x[0])}</b><small>${x[1]} menunggu tindakan</small></span><${Ico} n="arrow" s=${16} /></button></li>`)}</ul>` : null}
+    ${active.length ? h`<h2 className="sec-h">Proyek berjalan</h2>
+    <div className="hscroll" id="home-active">${active.slice(0, 10).map(p => {
+      const idx = Math.max(0, Math.min(p.stageIdx || 0, 7));
+      const inner = h`<b>${p.name}</b><span>${p.client.name}</span><div className="pbar"><i style=${{ width: Math.round(((idx + 1) / 8) * 100) + '%' }}></i></div>
+        <small>Tahap ${idx + 1}/8 · ${STAGES[idx]}</small>${p.status === 'in_rework' ? h`<${Badge} tone="bad">Perbaikan<//>` : null}`;
+      return canProd ? h`<button key=${p.id} className="pcard" onClick=${() => c.go('produksi')}>${inner}</button>` : h`<div key=${p.id} className="pcard">${inner}</div>`;
+    })}</div>` : null}
+  </div>`;
+}
+
 /* ---------- Kerangka aplikasi ---------- */
 function App({ boot }) {
-  useBrand();
+  useBrand(); useCats();
   const cloud = boot.mode === 'cloud';
-  const init = useMemo(() => (cloud ? { projects: [], cash: [], view: 'dashboard' } : (loadStore() || seed())), []);
+  const init = useMemo(() => (cloud ? { projects: [], cash: [], view: 'home' } : (loadStore() || seed())), []);
   const [projects, setProjects] = useState(init.projects);
   const [cash, setCash] = useState(init.cash);
   const [users, setUsers] = useState(cloud ? [boot.user] : DEMO_USERS);
   const [userId, setUserId] = useState(cloud ? boot.user.id : (DEMO_USERS.some(u => u.id === init.userId) ? init.userId : 'u-owner'));
-  const [view, setView] = useState(init.view || 'dashboard');
+  const [view, setView] = useState(init.view || 'home');
   const [confirmReset, setConfirmReset] = useState(false);
   const [period, setPeriod] = useState({ year: 'all', month: 'all' });
   const [phase, setPhase] = useState(cloud ? 'loading' : 'ready');
@@ -3000,6 +3286,7 @@ function App({ boot }) {
     storeRef.current = st;
     st.load().then(async d => {
       setProjects(d.projects); setCash(d.cash);
+      try { const cl = await fetchCats(boot.client); if (cl) applyCats(cl); } catch (e) { /* tabel app_settings belum dibuat: pakai daftar bawaan/lokal */ }
       if (boot.user.role === 'owner') { try { setUsers(await fetchUsers(boot.client)); } catch (e) { /* daftar pengguna opsional */ } }
       setPhase('ready'); setSync({ state: 'ok', msg: '' });
       st.subscribe();
@@ -3011,7 +3298,12 @@ function App({ boot }) {
     const st = loadCloud();
     const warn = e => { if (st.pendingCount() > 0) { e.preventDefault(); e.returnValue = ''; } };
     window.addEventListener('beforeunload', warn);
-    return () => { window.removeEventListener('beforeunload', warn); st.stop(); };
+    const wakeCats = () => {
+      if (document.visibilityState === 'hidden') return;
+      fetchCats(boot.client).then(cl => { if (cl && JSON.stringify(normCats(cl)) !== JSON.stringify(EXPENSE_LIST)) applyCats(cl); }).catch(() => { /* abaikan */ });
+    };
+    document.addEventListener('visibilitychange', wakeCats);
+    return () => { window.removeEventListener('beforeunload', warn); document.removeEventListener('visibilitychange', wakeCats); st.stop(); };
   }, []);
   useEffect(() => { if (cloud && phase === 'ready' && storeRef.current) storeRef.current.push(); }, [projects, cash, phase]);
 
@@ -3133,6 +3425,13 @@ function App({ boot }) {
       upd(id, x => ({ ...x, status: 'completed_pending_settlement', invoice: { ...x.invoice, settleStatus: 'none', settleRequest: null, settleReject: (reason || '').trim() || 'Data pembayaran belum sesuai' } }));
       toast('Pengajuan dikembalikan ke Sales dengan catatan.', 'warn');
     },
+    saveCats: async list => {
+      if (role !== 'owner') { toast('Hanya Owner yang boleh mengubah kategori kas keluar.', 'bad'); return; }
+      applyCats(list);
+      if (!cloud) { toast('Kategori kas keluar disimpan.'); return; }
+      try { await saveCatsCloud(boot.client, list); toast('Kategori kas keluar disimpan dan tersinkron.'); }
+      catch (e) { toast('Tersimpan di perangkat ini saja. Gagal ke server: ' + authMsg(e) + ' Jalankan file SQL pembaruan skema (tabel app_settings) di Supabase.', 'warn'); }
+    },
     addExpense: d => {
       setCash(cs => [{ id: uid('trx_out'), type: 'out', category: d.category, amount: d.amount, client: '-', note: d.note, date: new Date().toISOString(), account: d.account }, ...cs]);
       toast('Pengeluaran ' + rp(d.amount) + ' dicatat. Saldo kas berkurang.', 'warn');
@@ -3165,8 +3464,9 @@ function App({ boot }) {
     return 0;
   };
   const labelOf = v => (MENU_LABEL[v] && (MENU_LABEL[v][role] || MENU_LABEL[v].owner || MENU_LABEL[v].sales)) || v;
-  const body = { dashboard: Dashboard, prospek: ProspekView, jobs: JobsView, produksi: ProduksiView, verifikasi: VerifikasiView, kas: KasView, tagihan: TagihanView, cl: ClView, desain: DesainView, pengguna: UsersView, profil: ProfilView }[menu.includes(view) ? view : menu[0]];
+  const body = { dashboard: Dashboard, prospek: ProspekView, jobs: JobsView, produksi: ProduksiView, verifikasi: VerifikasiView, kas: KasView, tagihan: TagihanView, cl: ClView, desain: DesainView, pengguna: UsersView, profil: ProfilView, home: HomeView }[menu.includes(view) ? view : menu[0]];
   const cur = menu.includes(view) ? view : menu[0];
+  c.badgeOf = badgeOf; c.labelOf = labelOf; c.menu = menu;
 
   if (cloud && phase !== 'ready') {
     return h`<div className="splash" id="splash">${phase === 'error' ? h`<div><p className="errline" id="load-err">${loadErr}</p><div className="row-act"><button className="btn primary" onClick=${() => { if (storeRef.current) storeRef.current.stop(); loadCloud(); }}>Coba lagi</button><button className="btn" onClick=${boot.onExit}>Keluar</button></div></div>` : 'Memuat data dari Supabase...'}</div>`;
@@ -3193,9 +3493,9 @@ function App({ boot }) {
       <nav className="side" aria-label="Menu"><div className="side-role"><span>Peran aktif</span><b>${ROLES[role].label}</b>${role === 'sales' || cloud ? h`<small>${user.name}${user.salesCode ? ' · ' + user.salesCode : ''}</small>` : null}</div>
         <ul>${menu.map(v => h`<li key=${v}><button className=${cur === v ? 'on' : ''} aria-current=${cur === v ? 'page' : null} onClick=${() => go(v)}><span className="ni"><${Ico} n=${MENU_ICON[v]} s=${18} /></span><span className="nl">${labelOf(v)}</span><span className="ns">${MENU_SHORT[v]}</span>${badgeOf(v) ? h`<em className="nav-badge" title="Perlu tindakan">${badgeOf(v)}</em>` : null}</button></li>`)}</ul>
         <p className="side-note">${cloud ? 'Data tersimpan di Supabase dan tersinkron ke semua perangkat Anda.' : 'Mode Demo: data hanya tersimpan di browser ini. Keluar dari mode demo untuk masuk dengan akun.'}</p></nav>
-      <main className="main"><h1 className="page-title">${labelOf(cur)}</h1><${body} c=${c} /></main>
+      <main className="main">${cur === 'home' ? null : h`<h1 className="page-title">${labelOf(cur)}</h1>`}<div className="view" key=${cur}><${body} c=${c} /></div></main>
     </div>
-    <nav className="bnav" id="bnav" aria-label="Menu utama">
+    <nav className="bnav" id="bnav" aria-label="Menu utama" style=${{ '--n': bottomItems.length + 1, '--i': Math.max(0, bottomItems.indexOf(cur) >= 0 ? bottomItems.indexOf(cur) : bottomItems.length) }}>
       ${bottomItems.map(v => h`<button key=${v} className=${cur === v ? 'on' : ''} aria-current=${cur === v ? 'page' : null} onClick=${() => goMobile(v)}><${Ico} n=${MENU_ICON[v]} s=${20} /><span>${MENU_SHORT[v]}</span>${badgeOf(v) ? h`<em className="nav-badge">${badgeOf(v)}</em>` : null}</button>`)}
       <button id="bnav-more" className=${moreItems.includes(cur) || drawer ? 'on' : ''} aria-haspopup="dialog" aria-expanded=${drawer} onClick=${() => setDrawer(true)}><${Ico} n="more" s=${20} w=${4} /><span>Lainnya</span>${moreBadge ? h`<em className="nav-badge">${moreBadge}</em>` : null}</button>
     </nav>
@@ -3210,12 +3510,14 @@ function App({ boot }) {
     ${modal && modal.type === 'mockup' ? h`<${MockupModal} c=${c} pid=${modal.pid} onClose=${() => setModal(null)} />` : null}
     ${modal && modal.type === 'progress' ? h`<${ProgressModal} c=${c} pid=${modal.pid} onClose=${() => setModal(null)} />` : null}
     ${modal && modal.type === 'expense' ? h`<${ExpenseModal} c=${c} onClose=${() => setModal(null)} />` : null}
+    ${modal && modal.type === 'cats' && role === 'owner' ? h`<${CatsModal} c=${c} onClose=${() => setModal(null)} />` : null}
     ${modal && modal.type === 'doc' ? h`<${DocModal} c=${c} pid=${modal.pid} type=${modal.doc} onClose=${() => setModal(null)} />` : null}
     ${modal && modal.type === 'settle' ? h`<${SettleModal} c=${c} pid=${modal.pid} onClose=${() => setModal(null)} />` : null}
     ${modal && modal.type === 'photo' ? h`<${Modal} title=${modal.title || 'Foto'} onClose=${() => setModal(null)}><img className="bigimg" src=${modal.src} alt=${modal.title || 'Foto'} /><//>` : null}
   </div>`;
 }
 
+loadCatsLocal();
 ReactDOM.createRoot(document.getElementById('root')).render(h`<${Root} />`);
 })();
 </script>
