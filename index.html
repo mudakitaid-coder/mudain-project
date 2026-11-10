@@ -805,7 +805,7 @@ const normSize = v => {
 };
 const CASH_CATS = {
   opening: 'Saldo Awal', income_dp: 'DP Masuk', income_pelunasan: 'Pelunasan Masuk',
-  expense_bahan: 'Belanja Bahan Kain', expense_sablon: 'Sablon/Bordir', expense_upah: 'Upah', expense_ops: 'Operasional'
+  expense_bahan: 'Belanja Bahan Kain', expense_sablon: 'Sablon/Bordir', expense_upah: 'Upah', expense_ops: 'Operasional', expense_shopee: 'Pembayaran via Shopee', expense_maklon: 'Pembayaran Maklon', expense_percetakan: 'Pembayaran Percetakan' 
 };
 const EXPENSE_CATS = ['expense_bahan', 'expense_sablon', 'expense_upah', 'expense_ops'];
 /* Sumber kas di Buku Kas: diambil dari rekening di Profil Brand + kas tunai.
@@ -2195,7 +2195,7 @@ function KasView({ c }) {
     <div className=${'statgrid ' + (isAll ? 'three' : '')}>
       ${isAll ? null : h`<div className="stat"><span>Saldo Awal Periode</span><b>${rp(fp.opening)}</b><small>Saldo sebelum ${periodLabel(c.period)}</small></div>`}
       <div className="stat"><span>Kas Masuk</span><b>${rp(fp.inn)}</b><small>DP, pelunasan, saldo awal</small></div>
-      <div className="stat"><span>Kas Keluar</span><b>${rp(fp.out)}</b><small>Bahan, upah, operasional</small></div>
+      <div className="stat"><span>Kas Keluar</span><b>${rp(fp.out)}</b><small>Bahan, upah, operasional,</small></div>
       <div className="stat"><span>${isAll ? 'Saldo Kas Riil' : 'Saldo Akhir Periode'}</span><b>${rp(fp.closing)}</b><small>Sinkron dengan semua verifikasi</small></div></div>
     <${PiutangCard} c=${c} fp=${fp} />
     <section className="card"><div className="card-head"><h3>Mutasi Kas</h3>
